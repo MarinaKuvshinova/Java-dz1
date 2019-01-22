@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Set<MyClass> m = new TreeSet<MyClass>(
+				((Comparator<MyClass>)(x1,x2) -> {
+					return x2.text.length()-x1.text.length();
+				}).thenComparing((Comparator<MyClass>)(x1,x2) -> {
+					return x1.text.length()-x2.text.length();
+				})
+			);
+		m.add(new MyClass(500,"text"));
+		m.add(new MyClass(10,"text11"));
+		m.add(new MyClass(1000,"text1111"));
+		m.add(new MyClass(1000,"text111"));
+		m.add(new MyClass(3,"text11111"));
+
+		for(MyClass a:m) {
+			System.out.print(a);
+		}
+	}
+
+}
+
+class MyClass{
+	String text;
+	public MyClass(String text){
+		this.text = text;
+	}
+	@Override
+	public String toString() {
+		return "MyClass [text=" + text + "]";
+	}
+	
+}
